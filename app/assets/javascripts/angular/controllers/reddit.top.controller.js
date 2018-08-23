@@ -26,7 +26,7 @@
       $http.get('https://www.reddit.com/top.json', {params: params}).then(
         function(res, status){
           topEntries.entries = res.data.data.children;
-          console.log(res.data.data.children);
+          //console.log(res.data.data.children);
         },
         function(res, status){
           console.log("Error fetching from reddit.");
@@ -61,7 +61,7 @@
 
     // dismiss all
     topEntries.dismissAll = function(){
-    	
+    	topEntries.entries = [];
     }
 
     // filter by read and unread

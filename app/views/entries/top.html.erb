@@ -3,7 +3,9 @@
 		
 		<div class="col-md-5">
 
-			<h2>Reddit Posts</h2>
+			<h2>Reddit Posts <button class="btn btn-info" ng-click="topCtrl.dismissAll()"> Dismiss all</button>
+			<button class="btn btn-primary" ng-click="topCtrl.loadData()"> Reload data</button>
+			</h2>
 
 			<div ng-show="topCtrl.entries.length == 0" class="alert alert-info" role="alert">
 	  		<strong>Loading data!</strong>.
