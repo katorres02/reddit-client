@@ -7,10 +7,6 @@
 	background-color: lightgray;	
 }
 
-.media {
-	cursor: pointer;
-}
-
 .scrolling-list {
 	overflow-y: auto;
 	height: 700px;
@@ -22,4 +18,8 @@
 
 .badge-info {
 	background-color: #5bc0de;	
+}
+
+.pointer {
+	cursor: pointer;
 }

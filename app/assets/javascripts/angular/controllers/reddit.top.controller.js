@@ -40,13 +40,23 @@
     }
 
     // mark post as read
-    topEntries.readPost = function(){
+    topEntries.readPost = function(post){
     	
     }
 
     // dimiss from list
-    topEntries.dismiss = function(post){
+    topEntries.dismiss = function(post, index){
+    	if(topEntries.current_post == post){
+    		topEntries.current_post = null;
+    	}
+    	topEntries.entries.splice(index, 1);
+    }
 
+    // open post
+    topEntries.openPost = function(post){
+    	post.data.read = true;
+    	topEntries.current_post = post;
+    	topEntries.readPost(post)
     }
 
     // dismiss all

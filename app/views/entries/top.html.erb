@@ -11,17 +11,18 @@
 	  	</div>
 
 			<div class="scrolling-list">
-		  	<div class="thumbnail unread" ng-repeat="post in topCtrl.entries">
-					<div class="media" ng-click="topCtrl.current_post = post">
+		  	<div class="thumbnail"
+		  		ng-class="post.data.read == true ? 'read' : 'unread'"
+		  		ng-repeat="post in topCtrl.entries track by $index">
+					<div class="media">
 						<div class="media-left">
-							
 							<img ng-show="post.data.preview" alt="64x64" class="media-object" ng-src="{{post.data.thumbnail}}" style="width: 75px; height: 75px;">
 						</div>
 						<div class="media-body">
 							<div class="text-right">
-								<span class="badge badge-danger"><i class="fa fa-times"></i></span>
+								<span title="dismiss" ng-click="topCtrl.dismiss(post, $index)" class="badge badge-danger pointer"><i class="fa fa-times"></i></span>
 							</div>
-							<h4 class="media-heading">
+							<h4 ng-click="topCtrl.openPost(post)" class="media-heading pointer">
 								{{post.data.title}}
 							</h4>	
 							<p class="text-right">
