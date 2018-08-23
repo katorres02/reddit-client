@@ -5,3 +5,12 @@
 .read {
 	border: 1px solid #ddd;
 }
+
+.media {
+	cursor: pointer;
+}
+
+.scrolling-list {
+	overflow-y: auto;
+	height: 700px;
+}

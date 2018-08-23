@@ -8,6 +8,7 @@
 
     // variables section
     topEntries.entries = []; 
+    topEntries.current_post = null;
 
     topEntries.init = function(){
     	topEntries.loadData();
@@ -15,7 +16,16 @@
 
     // get data from reddit
     topEntries.loadData = function(){
-    	
+    	var params = {};
+      $http.get('https://www.reddit.com/top.json', {params: params}).then(
+        function(res, status){
+          topEntries.entries = res.data.data.children;
+          console.log(res.data.data.children);
+        },
+        function(res, status){
+          console.log("Error fetching from reddit.");
+        }
+      );	
     }
 
     // store locally with rails, for 'reading state'

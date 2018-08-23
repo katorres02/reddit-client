@@ -2,38 +2,40 @@
 	<div class="row">
 		
 		<div class="col-md-5">
-			
-	  	<div class="thumbnail unread">
-				<div class="media">
-					<div class="media-left">
-						<img alt="64x64" class="media-object" src="https://b.thumbs.redditmedia.com/BXFDqDqJg3jC2UE9OvYe2ZFe2i46TjsLW6GcE5tgW0U.jpg" style="width: 64px; height: 64px;">
-					</div>
-					<div class="media-body">
-						<div class="text-right">
-							<span>x</span>
-						</div>
-						<h4 class="media-heading">
-							Title
-						</h4>	
-						Description
-						<br>
-						<small class="text-left">author</small>
-						<div class="text-right">
-							<small>10 comments</small>
-							<small>20 hours ago</small>
-						</div>
-					</div>
-				</div>
-	  	</div>
 
-	  	<div class="alert alert-info" role="alert">
+			<div ng-show="topCtrl.entries.length == 0" class="alert alert-info" role="alert">
 	  		<strong>Loading data!</strong>.
 	  		<img width="20px" src="http://www.dariusland.com/images/load.gif">
+	  	</div>
+			<div class="scrolling-list">
+		  	<div class="thumbnail unread" ng-repeat="post in topCtrl.entries">
+					<div class="media" ng-click="topCtrl.current_post = post">
+						<div class="media-left">
+							
+							<img ng-show="post.data.preview" alt="64x64" class="media-object" ng-src="{{post.data.thumbnail}}" style="width: 75px; height: 75px;">
+						</div>
+						<div class="media-body">
+							<div class="text-right">
+								<span>x</span>
+							</div>
+							<h4 class="media-heading">
+								{{post.data.title}}
+							</h4>	
+							<p class="text-right">
+								{{post.data.author}}
+								<span>{{post.data.num_comments}}<i class="fa fa-comments"></i></span>
+								<span>{{post.data.created_utc}}</span>
+							</p>
+						</div>
+					</div>
+		  	</div>
 	  	</div>
 		</div>
 		
 		<div class="col-md-7">
-			Content
+			<div ng-show="topCtrl.current_post">
+				<pre>{{ topCtrl.current_post | json }}</pre>
+			</div>
 		</div>
 	</div>	
 </div>
