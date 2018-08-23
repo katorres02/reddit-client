@@ -8,7 +8,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body id="bootstrapedElement">
     <%= yield %>
   </body>
+
+  <script type="text/javascript">
+	  $( document ).ready(function() {
+	    var element = angular.element(document.querySelector('#bootstrapedElement'));
+
+	    //This will be truthy if initialized and falsey otherwise.
+	    var isInitialized = element.injector();
+	    if (!isInitialized) {
+	      angular.bootstrap(element, ['RedditModule']);
+	    }
+	  });
+	</script>
+
+
 </html>

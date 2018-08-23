@@ -1,2 +1,39 @@
-<h1>Entries#top</h1>
-<p>Find me in app/views/entries/top.html.erb</p>
+<div class="container" ng-controller="TopController as topCtrl" ng-init="topCtrl.init()">
+	<div class="row">
+		
+		<div class="col-md-5">
+			
+	  	<div class="thumbnail unread">
+				<div class="media">
+					<div class="media-left">
+						<img alt="64x64" class="media-object" src="https://b.thumbs.redditmedia.com/BXFDqDqJg3jC2UE9OvYe2ZFe2i46TjsLW6GcE5tgW0U.jpg" style="width: 64px; height: 64px;">
+					</div>
+					<div class="media-body">
+						<div class="text-right">
+							<span>x</span>
+						</div>
+						<h4 class="media-heading">
+							Title
+						</h4>	
+						Description
+						<br>
+						<small class="text-left">author</small>
+						<div class="text-right">
+							<small>10 comments</small>
+							<small>20 hours ago</small>
+						</div>
+					</div>
+				</div>
+	  	</div>
+
+	  	<div class="alert alert-info" role="alert">
+	  		<strong>Loading data!</strong>.
+	  		<img width="20px" src="http://www.dariusland.com/images/load.gif">
+	  	</div>
+		</div>
+		
+		<div class="col-md-7">
+			Content
+		</div>
+	</div>	
+</div>
