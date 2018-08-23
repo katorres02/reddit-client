@@ -3,10 +3,13 @@
 		
 		<div class="col-md-5">
 
+			<h2>Reddit Posts</h2>
+
 			<div ng-show="topCtrl.entries.length == 0" class="alert alert-info" role="alert">
 	  		<strong>Loading data!</strong>.
 	  		<img width="20px" src="http://www.dariusland.com/images/load.gif">
 	  	</div>
+
 			<div class="scrolling-list">
 		  	<div class="thumbnail unread" ng-repeat="post in topCtrl.entries">
 					<div class="media" ng-click="topCtrl.current_post = post">
@@ -16,15 +19,15 @@
 						</div>
 						<div class="media-body">
 							<div class="text-right">
-								<span>x</span>
+								<span class="badge badge-danger"><i class="fa fa-times"></i></span>
 							</div>
 							<h4 class="media-heading">
 								{{post.data.title}}
 							</h4>	
 							<p class="text-right">
 								{{post.data.author}}
-								<span>{{post.data.num_comments}}<i class="fa fa-comments"></i></span>
-								<span>{{post.data.created_utc}}</span>
+								<span class="badge badge-info">{{post.data.num_comments}} <i class="fa fa-comments"></i></span>
+								<span>{{post.data.created | moment: 'fromNow'}}</span>
 							</p>
 						</div>
 					</div>
@@ -34,7 +37,15 @@
 		
 		<div class="col-md-7">
 			<div ng-show="topCtrl.current_post">
-				<pre>{{ topCtrl.current_post | json }}</pre>
+				<h2>Selected Post</h2>
+				<div class="thumbnail">
+					<h3>{{topCtrl.current_post.data.title}}</h3>
+		      <img ng-src="{{topCtrl.current_post.data.preview.images[0].source.url}}" alt="...">
+		      <div class="caption">
+		        <h2>{{topCtrl.current_post.data.author}}</h2>
+		      </div>
+		    </div>
+				<!--<pre>{{ topCtrl.current_post | json }}</pre>-->
 			</div>
 		</div>
 	</div>	
