@@ -15,6 +15,8 @@
     // variables section
     topEntries.entries = []; 
     topEntries.current_post = null;
+    topEntries.after = null;
+    topEntries.before = null;
 
     topEntries.init = function(){
     	topEntries.loadData();
@@ -22,26 +24,45 @@
 
     // get data from reddit
     topEntries.loadData = function(){
-    	var params = {};
+    	var params = {
+    		limit: 25,
+    		after: topEntries.after,
+    	};
       $http.get('https://www.reddit.com/top.json', {params: params}).then(
         function(res, status){
           topEntries.entries = res.data.data.children;
+          topEntries.after   = res.data.data.after;
+
+          //console.log(topEntries.after)
           //console.log(res.data.data.children);
         },
         function(res, status){
           console.log("Error fetching from reddit.");
         }
-      );	
+      );
     }
 
     // store locally with rails, for 'reading state'
-    topEntries.storeLocal = function(){
-    	
+    topEntries.storeLocal = function(post){
+
     }
 
     // mark post as read
     topEntries.readPost = function(post){
-    	
+			var params = {
+    		post: {
+    			name_id: post.data.name,
+    			read: true
+    		}
+    	};
+      $http.post('/api/v1/posts/read.json', params).then(
+        function(res, status){
+        	console.log(res.data);
+        },
+        function(res, status){
+          console.log("Error. "+res.data.message);
+        }
+      );    	
     }
 
     // dimiss from list
