@@ -18,7 +18,23 @@
 		  		ng-repeat="post in topCtrl.entries track by $index">
 					<div class="media">
 						<div class="media-left">
-							<img ng-show="post.data.preview" alt="64x64" class="media-object" ng-src="{{post.data.thumbnail}}" style="width: 75px; height: 75px;">
+							
+							<div ng-if="post.data.thumbnail == 'self'">
+								<img src="https://www.reddit.com/static/self_default2.png" class="thumb-image">
+							</div>
+
+							<div ng-if="post.data.thumbnail == 'default'">
+								<img src="https://www.reddit.com/static/noimage.png" class="thumb-image">
+							</div>
+
+							<div ng-if="post.data.thumbnail == 'nsfw'">
+								<img src="https://www.reddit.com/static/nsfw2.png" class="thumb-image">
+							</div>
+
+							<div ng-if="post.data.thumbnail != 'nsfw' && post.data.thumbnail != 'default' && post.data.thumbnail != 'self'">
+								<img alt="64x64" ng-src="{{post.data.thumbnail}}" class="thumb-image">
+							</div>
+
 						</div>
 						<div class="media-body">
 							<div class="text-right">
@@ -46,7 +62,7 @@
 		      
 					<div ng-if="topCtrl.current_post.data.media_embed.content">
 						
-						{{topCtrl.current_post.data.preview.reddit_video_preview.scrubber_media_url}}"
+						<strong>Video Url: </strong>{{topCtrl.current_post.data.preview.reddit_video_preview.scrubber_media_url}}"
 					</div>
 
 		      <img ng-hide="topCtrl.current_post.data.media_embed.content"

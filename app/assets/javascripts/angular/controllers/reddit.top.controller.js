@@ -81,6 +81,7 @@
 
     // dismiss all
     topEntries.dismissAll = function(){
+        topEntries.current_post = null;
         topEntries.entries = [];
     }
 
