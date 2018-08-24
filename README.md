@@ -1,24 +1,18 @@
-# README
+# REDDIT TOP POSTS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Reddit client usign AngularJS and Ruby on Rails. Load the top 50 posts.
 
-Things you may want to cover:
+## Prerequisites
+You need:
+* Ruby
+* Ruby on Rails
 
-* Ruby version
+## Installation
+* Clone the repository
+* Run ``` bundle install ```
+* Run ``` rails s``` after bundle success
+* Open in browser ```http://localhost:3000```
 
-* System dependencies
+## Demo
+There is video demo inside the repository called ``` demo.mov ```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
