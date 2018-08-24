@@ -10,6 +10,7 @@ You need:
 ## Installation
 * Clone the repository
 * Run ``` bundle install ```
+* Run ``` rake db migrate ```
 * Run ``` rails s``` after bundle success
 * Open in browser ```http://localhost:3000```
 
