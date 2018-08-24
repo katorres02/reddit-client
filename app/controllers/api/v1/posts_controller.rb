@@ -9,6 +9,12 @@ class Api::V1::PostsController < ApiController
 		end
 	end
 
+	def check_reads
+		names = params[:posts]
+		posts = Post.where(name_id: names)
+		render json: posts.pluck(:name_id), status: :ok
+	end
+
 	private
 
 	def set_post

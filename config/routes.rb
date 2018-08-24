@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   		resources :posts, only: [:create] do
   			collection do
   				post 'read'
+          get 'check_reads'
   			end
   		end
   	end

@@ -43,12 +43,20 @@
 				<h2>Selected Post</h2>
 				<div class="thumbnail">
 					<h3>{{topCtrl.current_post.data.title}}</h3>
-		      <img ng-src="{{topCtrl.current_post.data.preview.images[0].source.url}}" alt="...">
+		      
+					<div ng-if="topCtrl.current_post.data.media_embed.content">
+						
+						{{topCtrl.current_post.data.preview.reddit_video_preview.scrubber_media_url}}"
+					</div>
+
+		      <img ng-hide="topCtrl.current_post.data.media_embed.content"
+		       	ng-src="{{topCtrl.current_post.data.preview.images[0].source.url}}" alt="...">
+		      
 		      <div class="caption">
 		        <h2>{{topCtrl.current_post.data.author}}</h2>
 		      </div>
 		    </div>
-				<pre>{{ topCtrl.current_post | json }}</pre>
+				<!--<pre>{{ topCtrl.current_post | json }}</pre>-->
 			</div>
 		</div>
 	</div>	
